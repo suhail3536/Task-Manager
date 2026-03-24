@@ -3,7 +3,7 @@ const Task = require("../models/Task");
 // Create
 exports.createTask = async (req, res) => {
   const task = await Task.create({
-    user: req.user.id,
+    User: req.Userser.id,
     title: req.body.title,
   });
   res.json(task);

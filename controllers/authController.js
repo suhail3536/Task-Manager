@@ -8,7 +8,7 @@ exports.signup = async (req, res) => {
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  const user = await User.create({
+  const User = await User.create({
     name,
     email,
     password: hashedPassword,
@@ -21,8 +21,8 @@ exports.signup = async (req, res) => {
 exports.login = async (req, res) => {
   const { email, password } = req.body;
 
-  const user = await User.findOne({ email });
-  if (!user) return res.status(400).json({ msg: "User not found" });
+  const User = await User.findOne({ email });
+  if (!User) return res.status(400).json({ msg: "User not found" });
 
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) return res.status(400).json({ msg: "Wrong password" });
