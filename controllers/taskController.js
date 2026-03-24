@@ -10,11 +10,14 @@ exports.createTask = async (req, res) => {
 };
 
 // Get
-exports.getTasks = async (req, res) => {
-  const tasks = await Task.find({ user: req.user.id });
-  res.json(tasks);
-};
+exports.createTask = async (req, res) => {
+  const task = await Task.create({
+    user: req.user.id, // ✅ correct
+    title: req.body.title,
+  });
 
+  res.json(task);
+};
 // Update
 exports.updateTask = async (req, res) => {
   const task = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true });
