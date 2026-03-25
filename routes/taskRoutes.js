@@ -8,7 +8,7 @@ const {
   deleteTask,
 } = require("../controllers/taskController");
 
-router.use(auth);
+router.use(authMiddleware);
 
 router.post("/", createTask);
 router.get("/", getTasks);
