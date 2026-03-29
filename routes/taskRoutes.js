@@ -1,12 +1,28 @@
 const router = require("express").Router();
-const authMiddleware = require('../middleware/authMiddleware');
+const authMiddleware = require("../middleware/authMiddleware");
 
-const {
+const createTask = (req, res) => {
+  res.send("Create Task");
+};
+
+const getTasks = (req, res) => {
+  res.send("Get Tasks");
+};
+
+const updateTask = (req, res) => {
+  res.send("Update Task");
+};
+
+const deleteTask = (req, res) => {
+  res.send("Delete Task");
+};
+
+module.exports = {
   createTask,
   getTasks,
   updateTask,
   deleteTask,
-} = require("../controllers/taskController");
+};
 
 router.use(authMiddleware);
 
